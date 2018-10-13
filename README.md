@@ -1,1 +1,1 @@
-Binet-Artificial-intelligence
+Binet AI
