@@ -168,7 +168,7 @@ def mainGame(movementInfo, nextagent):
     agent = [None]*10
     for i in range(10):
         agent[i] = nextagent()
-    score = 10
+    score = 0
     playerIndex = 0
     loopIter = 0
     playerIndexGen = movementInfo['playerIndexGen']
@@ -214,7 +214,7 @@ def mainGame(movementInfo, nextagent):
                 pygame.quit()
                 sys.exit()
         
-
+        scoreUpdated = False
         
         for birdname in range(10):
             if not playerCrashed[birdname]:
@@ -223,7 +223,7 @@ def mainGame(movementInfo, nextagent):
                     i+= 1
 
                     
-                v = [lowerPipes[i]['y'] - PIPEGAPSIZE/2, playery[birdname] + IMAGES['player'][0].get_height()/2, playerVelY[birdname]]
+                v = [lowerPipes[i]['y'] - PIPEGAPSIZE/2, playery[birdname] + IMAGES['player'][0].get_height()/2, upperPipes[i]['x'] + IMAGES['pipe'][0].get_width() - playerx[birdname]]
                 
                 if agent[birdname].shouldJump(v) :
                     if playery[birdname] > -2 * IMAGES['player'][0].get_height():
@@ -241,8 +241,9 @@ def mainGame(movementInfo, nextagent):
                 playerMidPos = playerx[birdname] + IMAGES['player'][0].get_width() / 2
                 for pipe in upperPipes:
                     pipeMidPos = pipe['x'] + IMAGES['pipe'][0].get_width() / 2
-                    if pipeMidPos <= playerMidPos < pipeMidPos + 4:
+                    if pipeMidPos <= playerMidPos < pipeMidPos + 4 and not scoreUpdated:
                         score += 1
+                        scoreUpdated = True
                         SOUNDS['point'].play()
 
                 # player's movement
@@ -302,7 +303,7 @@ def mainGame(movementInfo, nextagent):
         showScore(score)
         FPSCLOCK.tick(FPS)
         
-        if playerCrashed == [True]*10:
+        if playerCrashed == [True]*10 or score > 40:
             return
         
         
