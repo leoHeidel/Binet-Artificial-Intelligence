@@ -202,7 +202,8 @@ def mainGame(movementInfo, agent):
     playerFlapAcc =  -9   # players speed on flapping
     playerFlapped = False # True when player flaps
 
-
+    counter = 0
+    
     while True:
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
@@ -214,7 +215,11 @@ def mainGame(movementInfo, agent):
             i+= 1
         
         
-        v = [playery,(upperPipes[i]['y'] + lowerPipes[i]['y'])/2]
+        #v = [lowerPipes[i]['y'] - PIPEGAPSIZE/2 - IMAGES['player'][0].get_height()/2 - playery, playerVelY]
+        v = [lowerPipes[i]['y'] - PIPEGAPSIZE/2, playery + IMAGES['player'][0].get_height()/2, playerVelY]
+        #brouillonv = [lowerPipes[i]['y'] - PIPEGAPSIZE/2 - IMAGES['player'][0].get_height() - playery]
+        #playery = lowerPipes[i]['y'] - PIPEGAPSIZE/2 - IMAGES['player'][0].get_height()
+        
         if agent.shouldJump(v) :
             if playery > -2 * IMAGES['player'][0].get_height():
                 playerVelY = playerFlapAcc
@@ -242,6 +247,7 @@ def mainGame(movementInfo, agent):
             pipeMidPos = pipe['x'] + IMAGES['pipe'][0].get_width() / 2
             if pipeMidPos <= playerMidPos < pipeMidPos + 4:
                 score += 1
+                agent.passedPip()
                 SOUNDS['point'].play()
 
         # playerIndex basex change
@@ -301,8 +307,10 @@ def mainGame(movementInfo, agent):
         playerSurface = pygame.transform.rotate(IMAGES['player'][playerIndex], visibleRot)
         SCREEN.blit(playerSurface, (playerx, playery))
 
-        pygame.display.update()
-        FPSCLOCK.tick(FPS)
+        counter += 1
+        if not (counter % 2) :
+            pygame.display.update()
+            FPSCLOCK.tick(FPS)
 
 
 def showGameOverScreen(crashInfo):
