@@ -1,28 +1,25 @@
-FlappyBirdClone
+Implémentation de l'algorithme NEAT pour FlappyBird
 ===============
 
-A Flappy Bird Clone made using [python-pygame][1]
+Le code de flappyBird provient de ce projet sur gitHub : https://github.com/sourabhv/FlapPyBird
 
-How-to
-------
+Pour comprendre en quoi consiste NEAT, voici l'article initial : http://nn.cs.utexas.edu/downloads/papers/stanley.gecco02_1.pdf
 
-1. Install Python 2.7.X or 3.5.x from [here](https://www.python.org/download/releases/)
 
-2. Install PyGame 1.9.X from [here](http://www.pygame.org/download.shtml)
+### Installation : 
 
-3. Clone this repository: `git clone https://github.com/sourabhv/FlappyBirdClone.git` or click `Download ZIP` in right panel and extract it.
+1. Installer Conda
 
-4. Run `python flappy.py` from the repo's directory
+2. A l'aide de conda ou pip installer les modules suivants :
+  *Jupyter
+  *Numpy
+  *pygame (pip)
+  *neat (pip)
 
-5. use <kbd>&uarr;</kbd> or <kbd>Space</kbd> key to play and <kbd>Esc</kbd> to close the game.
+3. Télécharger les fichiers du github et ne pas les déplacer, leur position relative est importante.
 
-  (Note: Install pyGame for same version python as above)
+4. A l'aide de jupyter, lancer le notebook "NEAT agent.ipynb"
 
-  (For x64 windows, get exe [here](http://www.lfd.uci.edu/~gohlke/pythonlibs/#pygame))
+### Fonction de score :
 
-ScreenShot
-----------
-
-![Flappy Bird](screenshot1.png)
-
-[1]: http://www.pygame.org
+Le bon fonctionnement de NEAT repose essentiellement sur le bon choix d'une fonction de score. Ne pas hésiter à essayer d'améliorer son fonctionnement en la modifiant.
