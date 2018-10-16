@@ -11,10 +11,11 @@ Pour comprendre en quoi consiste NEAT, voici l'article initial : http://nn.cs.ut
 1. Installer Conda
 
 2. A l'aide de conda ou pip installer les modules suivants :
-  *Jupyter
-  *Numpy
-  *pygame (pip)
-  *neat (pip)
+  * Jupyter
+  * Numpy
+  * pygame (pip)
+  * neat (pip)
+  * neat-python (pip)
 
 3. Télécharger les fichiers du github et ne pas les déplacer, leur position relative est importante.
 
