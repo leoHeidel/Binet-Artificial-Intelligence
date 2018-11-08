@@ -1,1 +1,1 @@
-Binet AI
+Repository du Binet AI.
